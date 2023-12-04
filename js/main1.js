@@ -42,7 +42,7 @@ directionalLightBack.position.set(0, 5, -30);
 const sLightHelperBack = new THREE.DirectionalLightHelper(directionalLightBack);
 scene.add(sLightHelperBack);
 
-renderer.setClearColor(0xA3A3A3);
+renderer.setClearColor(0x02063d);
 
 const orbit = new OrbitControls(camera, renderer.domElement);
 
