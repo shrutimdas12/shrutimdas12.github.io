@@ -26,8 +26,8 @@ const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
 scene.add(directionalLight);
 directionalLight.position.set(0, 5, 30);
 
-const sLightHelper = new THREE.DirectionalLightHelper(directionalLight);
-scene.add(sLightHelper);
+// const sLightHelper = new THREE.DirectionalLightHelper(directionalLight);
+// scene.add(sLightHelper);
 
 // directionalLight.castShadow = true;
 // directionalLight.shadow.camera.bottom = -12;
@@ -39,8 +39,8 @@ const directionalLightBack = new THREE.DirectionalLight(0xFFFFFF, 1);
 scene.add(directionalLightBack);
 directionalLightBack.position.set(0, 5, -30);
 
-const sLightHelperBack = new THREE.DirectionalLightHelper(directionalLightBack);
-scene.add(sLightHelperBack);
+// const sLightHelperBack = new THREE.DirectionalLightHelper(directionalLightBack);
+// scene.add(sLightHelperBack);
 
 renderer.setClearColor(0x02063d);
 
@@ -49,12 +49,13 @@ const orbit = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 2, 15);
 orbit.update();
 
-const grid = new THREE.GridHelper(30, 30);
-scene.add(grid);
+// const grid = new THREE.GridHelper(30, 30);
+// scene.add(grid);
 
 const assetLoader = new GLTFLoader();
 
 let mixer;
+let action;
 assetLoader.load(handUrl.href, function(gltf) {
     
     const model = gltf.scene;
@@ -63,13 +64,27 @@ assetLoader.load(handUrl.href, function(gltf) {
     console.log("i loaded", gltf);
 
 
+    
+
+    //Listen for keydown instead of click
+    document.addEventListener('keydown', (e) => {
+
+    // Check if spacebar pressed 
+    if(e.code === 'Space') { 
+  
+    // Play animation
     mixer = new THREE.AnimationMixer(model);
     const clips = gltf.animations;
 
     // Play a certain animation
     const clip = THREE.AnimationClip.findByName(clips, 'Mudras');
-    const action = mixer.clipAction(clip);
+    action = mixer.clipAction(clip);
     action.play();
+
+  
+    }
+  
+  });
 
     // Play all animations at the same time
     // clips.forEach(function(clip) {
@@ -93,33 +108,6 @@ function animate() {
 
 renderer.setAnimationLoop(animate);
 
-// Listen for keydown instead of click
-// document.addEventListener('keydown', (e) => {
-
-//     // Check if spacebar pressed 
-//     if(e.code === 'Space') { 
-  
-//       // Play animation
-//       action.play();
-  
-//     }
-  
-//   });
-  
-//   // Disable spacebar after playing
-//   action.play = function() {
-  
-//     document.removeEventListener('keydown', handleKeydown); 
-//     THREE.AnimationAction.prototype.play.call(this);
-  
-//   }
-  
-//   // Re-enable spacebar when finished  
-//   action.onFinish = function() {
-  
-//     document.addEventListener('keydown', handleKeydown);
-  
-//   }
 
 window.addEventListener('resize', function() {
     camera.aspect = window.innerWidth / window.innerHeight;
