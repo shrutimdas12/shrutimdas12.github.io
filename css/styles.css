@@ -1,7 +1,7 @@
 body {
     margin: 0 !important;
     font-family: "Montserrat", sans-serif;
-    background-color: #000;
+    background-color: #02063D;
   }
   
   header {
@@ -21,4 +21,37 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  .heading{
+    text-align: center;
+    font-family: Mansalva;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0px;
+  }
+
+  .heading1{
+    font-size: 56px;
+    color: #FFFFFF;
+    margin-top: 10px;
+  }
+
+  .heading2{
+    font-size: 72px;
+    color: #842C2A;
+    margin-top: -36px;
+  }
+
+  .note{
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    margin: 0px;
+    font-size: 18px;
+    color: #B2ADAD;
+    margin-top: 5px;
   }
