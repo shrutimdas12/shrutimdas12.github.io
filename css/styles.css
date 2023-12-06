@@ -40,7 +40,7 @@ body {
 
   .heading2{
     font-size: 72px;
-    color: #842C2A;
+    color: #F9A81E;
     margin-top: -36px;
   }
 
@@ -54,4 +54,20 @@ body {
     font-size: 18px;
     color: #B2ADAD;
     margin-top: 5px;
+  }
+
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .playButton{
+    background-color: #02063D;
+    border: none;
+  }
+
+  .img{
+    max-width: 80px;
+    margin-top: 15px;
   }
